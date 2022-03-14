@@ -36,7 +36,7 @@ class ClientesController{
    }
 
    //Método Create --------------------
-   async salvarCliente(req, res) {
+   async salvarClientes(req, res) {
       try{
          const cliente = await new Promise((resolve, reject) => {
          
@@ -48,13 +48,13 @@ class ClientesController{
                telefone: parseInt(req.body.telefone)
             }
             
-            const verificacaoDosDados = verificaDadosClientes(result)
-
-            if(verificacaoDosDados === true){
-               resolve(result)
-            } else (
-               reject()
-            )
+            //const verificacaoDosDados = verificaDadosClientes(result)
+            resolve(result)
+            //if(verificacaoDosDados === true){
+              
+            //} else (
+               //reject()
+            //)
          })
          
          const infoClientes = `
