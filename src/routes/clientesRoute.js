@@ -14,4 +14,6 @@ router.get("/clientes/:id", clientes.buscarClientesId)
 
 router.delete("/clientes/:id", clientes.excluirClientes)
 
+router.put("/clientes/:id", clientes.atualizarCliente)
+
 export default router;
