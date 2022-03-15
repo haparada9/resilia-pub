@@ -10,4 +10,6 @@ router.get("/clientes", clientes.buscarTodosClientes)
 
 router.post("/clientes", clientes.salvarClientes)
 
+router.get("/clientes/:id", clientes.buscarClientesId)
+
 export default router;

@@ -1,5 +1,5 @@
 import { bdClientes } from '../model/clientes.js';
-import { verificaDadosClientes } from '../services/verificaDadosValidos.js';
+import { verificaDadosClientes}  from '../services/verificaDadosValidos.js';
 
 class ClientesController{
 
@@ -51,7 +51,7 @@ class ClientesController{
             //const verificacaoDosDados = verificaDadosClientes(result)
             resolve(result)
             //if(verificacaoDosDados === true){
-              
+         
             //} else (
                //reject()
             //)
@@ -100,6 +100,30 @@ class ClientesController{
          res.status(500).json(error)
       }
    }
+
+//Método Read
+buscarClientesId(req, res) {
+   try{
+      const id = req.params.id
+      const script = `SELECT * FROM clientes WHERE id = ${id}`
+      bdClientes.get(script, (e, row) => {
+         if(!e) {
+            if(row != undefined){
+               res.status(200).json(row)
+            }else {
+         res.status(404).send("Nenhum registro encontrado")
+      }
+   }else {
+      res.status(404).send("Banco de dados não acessível")
+   }
+   }) 
+   }  catch(error){
+         console.error(error)
+   }
 }
 
-export default ClientesController;
+
+}
+
+
+export default ClientesController
