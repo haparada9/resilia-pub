@@ -12,4 +12,6 @@ router.post("/clientes", clientes.salvarClientes)
 
 router.get("/clientes/:id", clientes.buscarClientesId)
 
+router.delete("/clientes/:id", clientes.excluirClientes)
+
 export default router;

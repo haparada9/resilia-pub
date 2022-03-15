@@ -121,7 +121,21 @@ buscarClientesId(req, res) {
          console.error(error)
    }
 }
-
+excluirClientes(req, res){
+   try{
+      const id = parseInt(req.params.id)
+      const script = `DELETE FROM clientes WHERE id = ${id}`
+      bdClientes.run(script, (e) => {
+         if(!e){
+            res.status(200).send("Registro deletado com sucesso")
+         } else {
+            res.status(404).send("Não foi possivel deletar o registro")
+         }
+      })
+   } catch(error){
+      console.error(error)
+   }
+}
 
 }
 
