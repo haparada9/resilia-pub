@@ -31,48 +31,21 @@ class ClientesController{
    }
 
    //Método Read ----------------------
-   async buscarTodosClientes(req, res){
-      const scriptSelect = `SELECT * FROM clientes`
-      try{
-         const results = await new Promise((resolve, reject) => {         
-            return (
-               bdClientes.all(scriptSelect, (e, rows) => {
-                  if(!e){
-                     resolve(rows)
-                  } else {
-                     reject("Problema ao obter dados")
-                  }
-               })
-            )         
-         })
-
-         res.status(200).json(results)
-
-      } catch(error) {
-         res.status(500).json(error)
-      }
+   async getClientes(req, res){
+      metodos.getAllClientes()
+      .then(response => res.send(response))
+      .catch(response => res.send(response))
    }
 
-//Método Read
-buscarClientesId(req, res) {
-   try{
+
+   //Método Read --------------------
+   getClienteId(req, res){
       const id = req.params.id
-      const script = `SELECT * FROM clientes WHERE id = ${id}`
-      bdClientes.get(script, (e, row) => {
-         if(!e) {
-            if(row != undefined){
-               res.status(200).json(row)
-            }else {
-         res.status(404).send("Nenhum registro encontrado")
-      }
-   }else {
-      res.status(404).send("Banco de dados não acessível")
+      metodos.getClienteId(id)
+      .then(response => res.send(response))
+      .catch(response => res.send(response))  
    }
-   }) 
-   }  catch(error){
-         console.error(error)
-   }
-}
+
 
 //Método DELETE.
 excluirClientes(req, res){
