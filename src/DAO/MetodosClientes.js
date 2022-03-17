@@ -51,3 +51,21 @@ class MetodosClientes {
     }
   }
 }
+
+//Método Read
+async buscarTodosClientes(){
+    try{
+        return new Promise((resolve, reject) => {
+            const scriptSelectClientes = `SELECT * FROM clientes`;
+            bdClientes.all(scriptSelectClientes, (e, rows) => {
+                if(!e){
+                    resolve(rows)
+                } else {
+                    reject("Problema ao obter dados")
+                }
+            })
+        })
+    } catch(e){
+        console.error(e.message)
+    }
+}
