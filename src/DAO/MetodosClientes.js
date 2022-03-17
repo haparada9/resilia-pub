@@ -69,3 +69,25 @@ async buscarTodosClientes(){
         console.error(e.message)
     }
 }
+
+//Método Read
+getClientesId(id){
+    try{
+        return new Promise((resolve, reject) => {
+            const scriptSelectClienteId = `SELECT * FROM clientes WHERE id = ${id}`;
+            bdClientes.get(scriptSelectClienteId, (e, row) => {
+                if(!e){
+                    if(row != undefined){
+                        resolve(row)
+                    } else {
+                        reject("Nenhum registro encontrado")
+                    }
+                } else {
+                    reject("Não foi possível acessar o banco de dados")
+                }
+            })
+        })
+    } catch(e){
+        console.error(e.message)
+    }
+}
