@@ -2,10 +2,10 @@ import { bdClientes } from "../model/cliente.js";
 
 class MetodosClientes {
   //Método create.
-  postTabela() {
+  postTable() {
     try {
       return new Promise((resolve, reject) => {
-        const scriptCriarTabela = `
+        const scriptCreateTable = `
             CREATE TABLE IF NOT EXISTS clientes (
                 id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
                 nome VARCHAR(50),
@@ -15,7 +15,7 @@ class MetodosClientes {
                 telefone VARCHAR(20)
             )`;
 
-        bdClientes.run(scriptCriarTabela, (e) => {
+        bdClientes.run(scriptCreateTable, (e) => {
           if (!e) {
             resolve("Tabela criada com sucesso.");
           } else {
@@ -29,7 +29,7 @@ class MetodosClientes {
   }
 
   //Método Create
-  criarCliente(nome, genero, data_nascimento, cpf, telefone) {
+  postCliente(nome, genero, data_nascimento, cpf, telefone) {
     try {
       return new Promise((resolve, reject) => {
         const scriptInsertCliente = `
@@ -52,7 +52,7 @@ class MetodosClientes {
   }
 
   //Método Read
-  async buscarTodosClientes() {
+  async getAllClientes() {
     try {
       return new Promise((resolve, reject) => {
         const scriptSelectClientes = `SELECT * FROM clientes`;
@@ -110,7 +110,7 @@ class MetodosClientes {
   }
 
   //Método Update
-  async atualizarCliente(
+  async updateCliente(
     id,
     novoNome,
     novoGenero,
