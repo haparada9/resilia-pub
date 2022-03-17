@@ -4,16 +4,16 @@ import ClientesController from '../controller/ClientesController.js';
 const router = Router();
 const clientes = new ClientesController()
 
-router.post("/criarTabela", clientes.criarTabela)
+router.post("/criarTabela", clientes.createTable)
 
-router.get("/clientes", clientes.buscarTodosClientes)
+router.get("/clientes", clientes.getClientes)
 
-router.post("/clientes", clientes.salvarClientes)
+router.post("/clientes", clientes.saveCliente)
 
-router.get("/clientes/:id", clientes.buscarClientesId)
+router.get("/clientes/:id", clientes.getClienteId)
 
-router.delete("/clientes/:id", clientes.excluirClientes)
+router.delete("/clientes/:id", clientes.deleteCliente)
 
-router.put("/clientes/:id", clientes.atualizarCliente)
+router.put("/clientes/:id", clientes.updateCliente)
 
 export default router;
