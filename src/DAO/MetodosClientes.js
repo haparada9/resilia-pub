@@ -91,3 +91,21 @@ getClientesId(id){
         console.error(e.message)
     }
 }
+
+//Método delete
+deleteCliente(id){
+    try{
+        return new Promise((resolve, reject) => {
+            const scriptDelete = `DELETE FROM funcionarios WHERE id = ${id}`;
+            bdClientes.run(scriptDelete, (e) => {
+                if(!e){
+                    resolve("Registro deletado com sucesso")
+                } else {
+                    reject("Não foi possível deletar o registro")
+                }
+            })
+        })
+    } catch(e) {
+        console.error(e.message)
+    }
+}
