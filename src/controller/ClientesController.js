@@ -3,7 +3,7 @@ import { verificaDadosClientes}  from '../services/verificaDadosValidos.js';
 
 class ClientesController{
 
-   //Método Create --------------------
+   //Método Create 
    criarTabela(req, res){
       const tabela_clientes = `
          CREATE TABLE IF NOT EXISTS clientes (
