@@ -1,41 +1,18 @@
 import { bdClientes } from '../model/clientes.js';
+import MetodosClientes from '../DAO/MetodosClientes.js';
 import { verificaDadosClientes}  from '../services/verificaDadosValidos.js';
 
+const metodos = new MetodosClientes();
 class ClientesController{
 
    //Método Create 
    criarTabela(req, res){
-      const tabela_clientes = `
-         CREATE TABLE IF NOT EXISTS clientes (
-            id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-            nome VARCHAR(50),
-            genero VARCHAR(20),
-            data_nascimento DATE,
-            cpf INTEGER,
-            telefone VARCHAR(20)
-         )
-      `;
+      metodos.postTabela()
+      .then(response => res.send(response))
+      .catch(response => res.send(response))
+   }     
 
-      return new Promise((resolve, reject) => {
-         return resolve(
-            bdClientes.run(tabela_clientes, (e) => {
-               try{
-                  if(!e){
-                     res.status(201)
-                     res.send("Tabela criada com sucesso")
-                  }                 
-               }
-               catch {
-                  res.status(401)
-                  res.send("Erro ao criar tabela ", e.message)
-               }              
-            })
-         )
-      })
-
-   }
-
-   //Método Create --------------------
+   //Método Create 
    async salvarClientes(req, res) {
       try{
          const cliente = await new Promise((resolve, reject) => {

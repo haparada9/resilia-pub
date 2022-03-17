@@ -2,7 +2,7 @@ import { bdClientes } from "../model/cliente.js";
 
 class MetodosClientes {
   //Método create.
-  criarTabela() {
+  postTabela() {
     try {
       return new Promise((resolve, reject) => {
         const scriptCriarTabela = `
