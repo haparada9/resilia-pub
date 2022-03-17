@@ -6,53 +6,28 @@ const metodos = new MetodosClientes();
 class ClientesController{
 
    //Método Create 
-   criarTabela(req, res){
-      metodos.postTabela()
+   createTable(req, res){
+      metodos.postTable()
       .then(response => res.send(response))
       .catch(response => res.send(response))
    }     
 
    //Método Create 
-   async salvarClientes(req, res) {
-      try{
-         const cliente = await new Promise((resolve, reject) => {
-         
-            const result = {
-               nome: req.body.nome,
-               genero: req.body.genero,
-               data_nascimento: req.body.data_nascimento,
-               cpf: parseInt(req.body.cpf),
-               telefone: parseInt(req.body.telefone)
-            }
-            
-            //const verificacaoDosDados = verificaDadosClientes(result)
-            resolve(result)
-            //if(verificacaoDosDados === true){
-         
-            //} else (
-               //reject()
-            //)
-         })
-         
-         const infoClientes = `
-         INSERT INTO clientes (nome, genero, data_nascimento, cpf, telefone) VALUES 
-            ('${cliente.nome}', '${cliente.genero}', ${cliente.data_nascimento}, ${cliente.cpf}, ${cliente.telefone}) 
-         `;
+   async saveCliente(req, res){
+     const dataCliente = await new Promise ((resolve, reject) => {
+        resolve([
+           req.body.nome,
+           req.body.genero,
+           req.body.data_nascimento,
+           req.body.cpf,
+           req.body.telefone
+        ]);
+        reject("Não foi possível pegar as informações do cliente")
+     })
 
-         bdClientes.run(infoClientes, (e) => {
-            if (!e) {
-               res.status(201)
-               res.send(
-               `Dados do cliente 
-               nome: ${cliente.nome}                
-               inseridos com sucesso`
-               );
-            }
-         });
-      } catch (error){
-         res.status(500)
-         res.send("Erro ao salvar dados do Cliente")
-      }
+     metodos.postCliente(...dataFuncionario)
+     .then(response => res.send(response))
+     .catch(response => res.send(response))
    }
 
    //Método Read ----------------------
