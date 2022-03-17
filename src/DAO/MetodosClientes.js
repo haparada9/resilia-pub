@@ -1,4 +1,4 @@
-import { bdClientes } from "../model/cliente.js";
+import { bdClientes } from "../model/clientes.js";
 
 class MetodosClientes {
   //Método create.

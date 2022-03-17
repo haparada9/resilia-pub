@@ -1,8 +1,10 @@
 import { Router } from 'express';
 import ClientesController from '../controller/ClientesController.js';
 
+
 const router = Router();
 const clientes = new ClientesController()
+
 
 router.post("/criarTabela", clientes.createTable)
 
