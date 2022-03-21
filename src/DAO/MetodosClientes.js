@@ -17,9 +17,9 @@ class MetodosClientes {
 
         bdClientes.run(scriptCreateTable, (e) => {
           if (!e) {
-            resolve("Tabela criada com sucesso.");
+            resolve({mensagem:"Tabela criada com sucesso."});
           } else {
-            reject("Erro ao criar tabela.");
+            reject({mensagem:"Erro ao criar tabela."});
           }
         });
       });
@@ -38,11 +38,9 @@ class MetodosClientes {
         `;
         bdClientes.run(scriptInsertCliente, (e) => {
           if (!e) {
-            resolve(`Dados do cliente
-                nome: ${nome}
-                inserido com sucesso`);
+            resolve({mensagem:`Dados do cliente nome: ${nome} inserido com sucesso`});
           } else {
-            reject("Erro ao salvar dados do Cliente.");
+            reject({mensagem:"Erro ao salvar dados do Cliente."});
           }
         });
       });
@@ -60,7 +58,7 @@ class MetodosClientes {
           if (!e) {
             resolve(rows);
           } else {
-            reject("Problema ao obter dados");
+            reject({mensagem:"Problema ao obter dados"});
           }
         });
       });
@@ -79,10 +77,10 @@ class MetodosClientes {
             if (row != undefined) {
               resolve(row);
             } else {
-              reject("Nenhum registro encontrado");
+              reject({mensagem:"Nenhum registro encontrado"});
             }
           } else {
-            reject("Não foi possível acessar o banco de dados");
+            reject({mensagem:"Não foi possível acessar o banco de dados"});
           }
         });
       });
@@ -95,12 +93,12 @@ class MetodosClientes {
   deleteCliente(id) {
     try {
       return new Promise((resolve, reject) => {
-        const scriptDelete = `DELETE FROM funcionarios WHERE id = ${id}`;
+        const scriptDelete = `DELETE FROM clientes WHERE id = ${id}`;
         bdClientes.run(scriptDelete, (e) => {
           if (!e) {
-            resolve("Registro deletado com sucesso");
+            resolve({mensagem:"Registro deletado com sucesso"});
           } else {
-            reject("Não foi possível deletar o registro");
+            reject({mensagem:"Não foi possível deletar o registro"});
           }
         });
       });
@@ -120,12 +118,12 @@ class MetodosClientes {
   ) {
     try {
       return new Promise((resolve, reject) => {
-        const scriptUpdate = `UPDATE clientes SET nome='${novoNome}', genero='${novogenero}', data_nascimento=${novodata_nascimento}, cpf=${novoCpf}, telefone=${novotelefone} WHERE id = ${id}`;
+        const scriptUpdate = `UPDATE clientes SET nome='${novoNome}', genero='${novoGenero}', data_nascimento=${novoData_nascimento}, cpf=${novoCpf}, telefone=${novoTelefone} WHERE id = ${id}`;
         bdClientes.run(scriptUpdate, (e) => {
           if (!e) {
-            resolve("Registro atualizado com sucesso");
+            resolve({mensagem:"Registro atualizado com sucesso"});
           } else {
-            reject("Não foi possível atualizar o registro");
+            reject({mensagem:"Não foi possível atualizar o registro"});
           }
         });
       });
