@@ -10,12 +10,12 @@ router.post("/criarTabela", clientes.createTable)
 
 router.get("/clientes", clientes.getClientes)
 
-router.post("/clientes", clientes.saveCliente)
+router.post("/salvarCliente", clientes.saveCliente)
 
-router.get("/clientes/:id", clientes.getClienteId)
+router.get("/buscarClientes/:id", clientes.getClienteId)
 
-router.delete("/clientes/:id", clientes.deleteCliente)
+router.delete("/deletarCliente/:id", clientes.deleteCliente)
 
-router.put("/clientes/:id", clientes.updateCliente)
+router.put("/atualizarCliente/:id", clientes.updateCliente)
 
 export default router;
