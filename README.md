@@ -41,7 +41,7 @@ npm start
 
 # Rotas da API
 
-Essa aplicação possui um conjunto de rotas que torna possível o uso de todos os verbos HTTP necessários para a realização do CRUD
+Essa aplicação possui um conjunto de rotas que torna possível o uso de todos os verbos HTTP necessários para a realização do CRUD.
 
 ### **1 - Salvar as informações de um cliente**
 
@@ -80,11 +80,11 @@ Deverá ser passado como parâmetro um id existente no banco de dados na url da 
 
 ### **4 - Buscar as informações de apenas um cliente**
 
-Para buscar as informações um cliente na API é usado o método HTTP `GET` no caminho `urlApi/atualizarCliente/:id`.
+Para buscar as informações um cliente na API é usado o método HTTP `GET` no caminho `urlApi/buscarClientes/:id`.
 
 Deverá ser passado como parâmetro um id existente no banco de dados na url da requisição e a API retornará os dados do cliente em formato JSON como o **exemplo** a seguir:
 
-`http://localhost:3000/atualizarCliente/18`
+`http://localhost:3000/buscarClientes/18`
 ```
 {
     "nome": "Hugo Parada",
@@ -95,7 +95,7 @@ Deverá ser passado como parâmetro um id existente no banco de dados na url da 
 }
 ```
 
-### **4 - Buscar as informações de todos os clientes**
+### **5 - Buscar as informações de todos os clientes**
 
 Para buscar as informações de todos os clientes na API é usado o método HTTP `GET` no caminho `urlApi/clientes`.
 
